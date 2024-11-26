@@ -114,29 +114,6 @@ CREATE TABLE Mensagem (
 );
 
 
-
-CREATE TRIGGER ValidarInsercaoMensagem
-BEFORE INSERT ON Mensagem
-FOR EACH ROW
-BEGIN
-    DECLARE ChatExiste INT;
-    SELECT COUNT(*) INTO ChatExiste
-    FROM Chat
-    WHERE IDChat = NEW.IDChat;
-
-    IF ChatExiste = 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'O chat informado não existe.';
-    END IF;
-END;
-
-
-CREATE TABLE Tag (
-    Nome_Tag VARCHAR(50) PRIMARY KEY NOT NULL
-);
-
-
-
 CREATE TABLE UsuarioTag (
     ID_User INT NOT NULL, 
     ID_Tag INT NOT NULL, 
