@@ -1,1 +1,6 @@
+INSERT INTO Usuario
+(Nome_User, Email, Data_Nascimento, Fot)
+VALUES
+('Kid', 'bigkidbeingcoool', '24-03-2003', 'meudesenho.png'),
+
 
