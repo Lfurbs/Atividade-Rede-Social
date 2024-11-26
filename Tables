@@ -24,3 +24,32 @@ CREATE TABLE Postagens (
     Data_Criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (Autor) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE Notificacoes (
+    ID_Notificacao INTEGER PRIMARY KEY AUTOINCREMENT,
+    ID_User_Notificado VARCHAR(50) NOT NULL,  -- Usuário que será notificado
+    Tipo_Interacao VARCHAR(20) NOT NULL CHECK (Tipo_Interacao IN ('curtiu', 'comentou')),  
+    Origem_Interacao INTEGER NOT NULL, 
+    Data_Hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    Tipo_Notificacao VARCHAR(50) NOT NULL, 
+    FOREIGN KEY (ID_User_Notificado) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Grupo (
+    ID_Grupo INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(50) UNIQUE NOT NULL,
+    Descricao TEXT,
+    Data_Criacao DATETIME NOT NULL,
+    Nome_Criador VARCHAR(50) NOT NULL,
+    FOREIGN KEY (Nome_Criador) REFERENCES Usuario(Nome_User)
+);
+
+CREATE TABLE Membro_Grupo (
+    ID_Membro INT PRIMARY KEY AUTO_INCREMENT,
+    Nome_User VARCHAR(50) NOT NULL,
+    ID_Grupo INT NOT NULL,
+    Funcao ENUM('membro', 'administrador') NOT NULL,
+    PRIMARY KEY (ID_Grupo, ID_Membro),
+    FOREIGN KEY (ID_Grupo) REFERENCES Grupo(ID_Grupo),
+    FOREIGN KEY (Nome_User) REFERENCES Usuario(Nome_User)
+);
