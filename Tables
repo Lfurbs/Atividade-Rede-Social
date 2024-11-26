@@ -1,3 +1,6 @@
+CREATE DATABASE redesocial;
+USE redesocial;
+
 CREATE TABLE Usuario (
     Nome_User VARCHAR(50) PRIMARY KEY NOT NULL,
     Email VARCHAR(100) UNIQUE NOT NULL,
