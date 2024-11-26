@@ -1,1 +1,23 @@
+CREATE TABLE Usuario (
+    Nome_User VARCHAR(50) PRIMARY KEY NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Data_Nascimento DATE NOT NULL,
+    Foto VARCHAR(255)
+    );
 
+CREATE TABLE Conexao (
+    Conexao_ID INT PRIMARY KEY AUTO_INCREMENT,
+    User_Primario VARCHAR(50) NOT NULL,
+    Seguindo VARCHAR(50) NOT NULL,
+    FOREIGN KEY (User_Primario) REFERENCES Usuario(Nome_User),
+    FOREIGN KEY (Seguindo) REFERENCES Usuario(Nome_User)
+);
+
+CREATE TABLE Postagens (
+    ID_Postagem INTEGER PRIMARY KEY AUTO_INCREMENT,
+    Autor VARCHAR(50) NOT NULL,
+    Tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('texto', 'imagem', 'video')),
+    Conteudo TEXT NOT NULL,
+    Data_Criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Autor) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
+);
