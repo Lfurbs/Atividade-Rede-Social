@@ -1,6 +1,18 @@
+
+-- template: ('', '', '', ''),
 INSERT INTO Usuario
 (Nome_User, Email, Data_Nascimento, Fot)
 VALUES
 ('Kid', 'bigkidbeingcoool', '24-03-2003', 'meudesenho.png'),
-
-
+('f0x_00', 'eugostoderaposas@hotmail.com', '25-02-2000', 'wild_white_fox.jepg'),
+('Marianinho', 'mariano2287@uorak.com', '25-02-19990', 'IMG_03000460'),
+('mariafernanda', 'mafe@gmail.com', '17-05-1988', '05541_lab.png'),
+('gantz009', 'esfera@gmail.com', '13-01-2003', 'ASDCS15X.jpeg'),
+('galoshamo', 'galodbriga@outlook.com', '02-06-1987', 'galoindiano.png'),
+('Galadriel00y', 'yruilu@gmail.com', '18-06-1987', 'sdafds.png'),
+('ovildo001', 'ovildo001@hotmail.com', '10-08-2000', 'kasik.png'),
+('kaioask', 'kaioask23@gmail.com', '01-08-1999', 'IMG_19385019'),
+('gust42', 'gust42@gmail.com', '06-11-2002', 'askask.png'),
+('ClaraOli', 'clara.oliveira@gmail.com', '15-03-1993', 'clara_oliveira.png'),
+('MartinsSofia', 'sofia.martins@gmail.com', '22-12-2002', 'sofia.png'),
+('PedroAlmeida', 'pedro.almeida@gmail.com', '08-09-2001', 'almeida.jpg'),
