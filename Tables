@@ -22,17 +22,17 @@ CREATE TABLE Postagens (
 	FOREIGN KEY (Autor) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Troquei a foreign do autor de Usuario(Nome_User) para Postagens(Autor)
+-- Corrigido conforme código do Isaac
 CREATE TABLE Avaliacoes_Postagens (
 	ID_Avaliacao INTEGER PRIMARY KEY AUTO_INCREMENT,
 	Avaliador VARCHAR(50) NOT NULL,  
 	ID_Postagem_Avaliada INTEGER NOT NULL,
-	Autor VARCHAR(50) NOT NULL,
+	Notificado VARCHAR(50) NOT NULL,
 	Tipo VARCHAR(20) NOT NULL CHECK (Tipo IN ('curtiu seu post', 'não curtiu seu post')),
 	FOREIGN KEY (Avaliador) REFERENCES Usuario(Nome_User),
 	FOREIGN KEY (ID_Postagem_Avaliada) REFERENCES Postagens(ID_Postagem) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (Autor) REFERENCES Postagens(Autor) ON DELETE CASCADE ON UPDATE CASCADE,
-	UNIQUE (ID_Postagem_Avaliada, Autor)
+	FOREIGN KEY (Notificado) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
+	UNIQUE (ID_Postagem_Avaliada, Notificado)
 );
 
 CREATE TABLE Comentarios (
@@ -60,14 +60,14 @@ CREATE TABLE Avaliacoes_Comentarios (
 	UNIQUE (ID_Comentario, Avaliador)
 )
 
--- Mudei de ID_User_Notificado para ID_Notificado
+-- Corrigido conforme código do Isaac
 CREATE TABLE Notificacoes (
 	ID_Notificacao INTEGER PRIMARY KEY AUTOINCREMENT,
 	ID_Notificado VARCHAR(50) NOT NULL, 
-	Tipo_Interacao VARCHAR(20) NOT NULL CHECK (Tipo_Interacao IN ('curtiu', 'comentou')),  
-	Origem_Interacao INTEGER NOT NULL, 
+	Tipo_Interacao VARCHAR(20) NOT NULL CHECK (Tipo_Interacao IN ('curtiu', 'comentou')),
+	ID_Postagem_Pai
+	ID_Comentario_Pai
 	Data_Hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-    	Tipo_Notificacao VARCHAR(50) NOT NULL, 
 	FOREIGN KEY (ID_Notificado) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -90,16 +90,18 @@ CREATE TABLE Membro_Grupo (
     	FOREIGN KEY (Membro) REFERENCES Usuario(Nome_User)
 );
 
+-- ID_User1 e ID_User2 viraram User1 e User2
 CREATE TABLE Chat (
     	ID_Chat INT PRIMARY KEY AUTO_INCREMENT, 
-    	ID_User1 INT NOT NULL, 
-    	ID_User2 INT NOT NULL, 
+    	User1 INT NOT NULL, 
+    	User2 INT NOT NULL, 
     	Data_Criacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    	FOREIGN KEY (ID_User1) REFERENCES Usuario(Nome_User),
-    	FOREIGN KEY (ID_User2) REFERENCES Usuario(Nome_User),
-    	UNIQUE (ID_User1, ID_User2) 
+    	FOREIGN KEY (User1) REFERENCES Usuario(Nome_User),
+    	FOREIGN KEY (User2) REFERENCES Usuario(Nome_User),
+    	UNIQUE (User1, User2) 
 );
 
+-- Corrigido conforme código do Isaac
 CREATE TABLE Mensagem (
     	ID_Mensagem INT PRIMARY KEY AUTO_INCREMENT, 
     	ID_Chat INT NOT NULL, 
@@ -110,4 +112,15 @@ CREATE TABLE Mensagem (
     	Status ENUM('Enviada', 'Recebida', 'Lida') NOT NULL DEFAULT 'Enviada', 
     	FOREIGN KEY (ID_Chat) REFERENCES Chat(ID_Chat),
     	FOREIGN KEY (Remetente) REFERENCES Usuario(Nome_User)
+	FOREIGN KEY (Destinatario) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE Tag (
+	Nome_Tag VARCHAR(50) PRIMARY KEY NOT NULL
+);
+
+CREATE TABLE Usuario_Tag (
+	User VARCHAR(50) NOT NULL,
+	Tag VARCHAR(50) NOT NULL,
+	PRIMARY KEY (User, Tag),
+	FOREIGN KEY (User) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
