@@ -1,12 +1,12 @@
-CREATE DATABASE Rede_Social;
-USE Rede_Social;
+CREATE DATABASE redesocial;
+USE redesocial;
 
 CREATE TABLE Usuario (
     Nome_User VARCHAR(50) PRIMARY KEY NOT NULL,
     Email VARCHAR(100) UNIQUE NOT NULL,
     Data_Nascimento DATE NOT NULL,
     Foto VARCHAR(255)
-    );
+);
 
 CREATE TABLE Conexao (
     Conexao_ID INT PRIMARY KEY AUTO_INCREMENT,
