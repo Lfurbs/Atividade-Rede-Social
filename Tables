@@ -2,65 +2,65 @@ CREATE DATABASE redesocial;
 USE redesocial;
 
 CREATE TABLE Usuario (
-    Nome_User VARCHAR(50) PRIMARY KEY NOT NULL,
-    Email VARCHAR(100) UNIQUE NOT NULL,
-    Data_Nascimento DATE NOT NULL,
-    Foto VARCHAR(255)
+    	Nome_User VARCHAR(50) PRIMARY KEY NOT NULL,
+    	Email VARCHAR(100) UNIQUE NOT NULL,
+    	Data_Nascimento DATE NOT NULL,
+    	Foto VARCHAR(255)
 );
 
 CREATE TABLE Conexao (
-    Conexao_ID INT PRIMARY KEY AUTO_INCREMENT,
-    User_Primario VARCHAR(50) NOT NULL,
-    Seguindo VARCHAR(50) NOT NULL,
-    FOREIGN KEY (User_Primario) REFERENCES Usuario(Nome_User),
-    FOREIGN KEY (Seguindo) REFERENCES Usuario(Nome_User)
+    	Conexao_ID INT PRIMARY KEY AUTO_INCREMENT,
+    	User_Primario VARCHAR(50) NOT NULL,
+    	Seguindo VARCHAR(50) NOT NULL,
+    	FOREIGN KEY (User_Primario) REFERENCES Usuario(Nome_User),
+    	FOREIGN KEY (Seguindo) REFERENCES Usuario(Nome_User)
 );
 
 CREATE TABLE Postagens (
-    ID_Postagem INTEGER PRIMARY KEY AUTO_INCREMENT,
-    Autor VARCHAR(50) NOT NULL,
-    Tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('texto', 'imagem', 'video')),
-    Conteudo TEXT NOT NULL,
-    Data_Criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (Autor) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
+    	ID_Postagem INTEGER PRIMARY KEY AUTO_INCREMENT,
+    	Autor VARCHAR(50) NOT NULL,
+    	Tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('texto', 'imagem', 'video')),
+    	Conteudo TEXT NOT NULL,
+    	Data_Criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    	FOREIGN KEY (Autor) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Avaliacoes_Postagens (
 	ID_Avaliacao INTEGER PRIMARY KEY AUTO_INCREMENT,
-	Avaliador VARCHAR(50) NOT NULL,  
-	ID_Postagem_Avaliada INTEGER NOT NULL,
-	ID_Notificado VARCHAR(50) NOT NULL,
-	Tipo VARCHAR(20) NOT NULL CHECK (Tipo IN ('curtiu seu post', 'não curtiu seu post')),
-	FOREIGN KEY (Avaliador) REFERENCES Usuario(Nome_User),
-	FOREIGN KEY (ID_Postagem_Avaliada) REFERENCES Postagens(ID_Postagem) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (ID_Notificado) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
-	UNIQUE (ID_Postagem_Avaliada, ID_Notificado)
+    	Avaliador VARCHAR(50) NOT NULL,  
+    	ID_Postagem_Avaliada INTEGER NOT NULL,
+    	ID_Notificado VARCHAR(50) NOT NULL, 
+    	Tipo VARCHAR(20) NOT NULL CHECK (Tipo IN ('curtiu seu post', 'não curtiu seu post')), 
+    	FOREIGN KEY (Avaliador) REFERENCES Usuario(Nome_User),
+    	FOREIGN KEY (ID_Postagem_Avaliada) REFERENCES Postagens(ID_Postagem) ON DELETE CASCADE ON UPDATE CASCADE,
+    	FOREIGN KEY (ID_Notificado) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
+    	UNIQUE (ID_Postagem_Avaliada, ID_Notificado)
 );
 
 CREATE TABLE Comentarios (
-	ID_Comentario INTEGER PRIMARY KEY AUTO_INCREMENT,
-	Conteudo TEXT NOT NULL,
-	ID_Postagem_Pai INTEGER,
-	Autor VARCHAR(50) NOT NULL,
-	Destinatario VARCHAR(50) NOT NULL,
-	ID_Comentario_Pai INTEGER,
-	FOREIGN KEY (ID_Postagem_Pai) REFERENCES Postagens(ID_Postagem) ON DELETE CASCADE ON UPDATE CASCADE,  -- Corrigido o nome da coluna
-	FOREIGN KEY (ID_Comentario_Pai) REFERENCES Comentarios(ID_Comentario) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (Autor) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (Destinatario) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
+    	ID_Comentario INTEGER PRIMARY KEY AUTO_INCREMENT,
+    	Conteudo TEXT NOT NULL,
+    	ID_Postagem_Pai INTEGER,
+    	Autor VARCHAR(50) NOT NULL,
+    	Destinatario VARCHAR(50) NOT NULL,
+    	ID_Comentario_Pai INTEGER,
+    	FOREIGN KEY (ID_Postagem_Pai) REFERENCES Postagens(ID_Postagem) ON DELETE CASCADE ON UPDATE CASCADE,
+    	FOREIGN KEY (ID_Comentario_Pai) REFERENCES Comentarios(ID_Comentario) ON DELETE CASCADE ON UPDATE CASCADE,
+    	FOREIGN KEY (Autor) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
+    	FOREIGN KEY (Destinatario) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Avaliacoes_Comentarios (
-ID_Avaliacao INTEGER PRIMARY KEY AUTO_INCREMENT,
-ID_Comentario INTEGER NOT NULL,
-Avaliador VARCHAR(50) NOT NULL,
-Avaliado VARCHAR(50) NOT NULL,
-Tipo VARCHAR(50) NOT NULL CHECK (Tipo IN ('curtiu seu comentário', 'não curtiu seu comentário')),
-FOREIGN KEY (ID_Comentario) REFERENCES Comentarios(ID_Comentario) ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (Avaliador) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (Avaliado) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
-UNIQUE (ID_Comentario, Avaliador)
-)
+	ID_Avaliacao INTEGER PRIMARY KEY AUTO_INCREMENT,
+	ID_Comentario INTEGER NOT NULL, 
+	Avaliador VARCHAR(50) NOT NULL, 
+	Avaliado VARCHAR(50) NOT NULL,
+	Tipo VARCHAR(50) NOT NULL CHECK (Tipo IN ('curtiu seu comentário', 'não curtiu seu comentário')),
+	FOREIGN KEY (ID_Comentario) REFERENCES Comentarios(ID_Comentario) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (Avaliador) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (Avaliado) REFERENCES Usuario(Nome_User) ON DELETE CASCADE ON UPDATE CASCADE,
+	UNIQUE (ID_Comentario, Avaliador)
+);
 
 CREATE TABLE Notificacoes (
     ID_Notificacao INTEGER PRIMARY KEY AUTOINCREMENT,
