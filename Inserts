@@ -16,3 +16,58 @@ VALUES
 ('ClaraOli', 'clara.oliveira@gmail.com', '15-03-1993', 'clara_oliveira.png'),
 ('MartinsSofia', 'sofia.martins@gmail.com', '22-12-2002', 'sofia.png'),
 ('PedroAlmeida', 'pedro.almeida@gmail.com', '08-09-2001', 'almeida.jpg'),
+
+INSERT INTO Conexao
+(ID_Conexao, User_Primario, Seguindo)
+VALUES
+('Kid', 'Marianinho'),
+('Marianinho', 'Kid'),
+('f0x_00', 'Marianinho'),
+('ovildo001', 'Kid'),
+('kaioask', 'f0x_00'),
+('gust42', 'Kid'),
+('MartinSofia', 'PedroAlmeida'),
+('ClaraOli', 'Galadriel00y'),
+('PedroAlmeida', 'mariafernanda'),
+('Marianinho', 'mariafernanda'),
+
+-- template: ('', '', '', ''),
+INSERT INTO Postagens
+(Autor, Tipo, Conteudo, Data_Criacao)
+VALUES
+('Marianinho', 'imagem', 'Hard life enquanto vivo na praia', '22-02-2024'),
+('Kid', 'texto', '"Another love song about shit, and I'll be rich if I give another diss" Tyler The Creator e mt bom', '24-08-2024'),
+('ovildo001', 'video', 'Meu humor estar pessimo hj', '23/09/2024'),
+('kaioask', 'imagem', 'Que dia frio', '02/10/2024'),
+('gust42', 'video', 'Sera que vai ter continuaçao ?', '09/03/2024'),
+('ClaraOli', 'imagem', 'Compartilhando uma foto do meu último passeio de bicicleta 🚴‍♂️', '29-03-2024'),
+('PedroAlmeida', 'texto', 'Dica de livro: "O Alquimista" de Paulo Coelho. Alguém já leu? 📚🤔', '31/01/2024'),
+('gantz009', 'video', 'Esse gato tocando piano e muito engraçado 😂 ', '07-06-2024'),
+
+
+INSERT INTO Comentarios 
+(Conteudo, ID_Postagem_Pai, Nome_Autor, Nome_Destinatario, ID_Comentario_Pai) 
+VALUES
+('Onde fica esse lugar?', 1, 'Galadriel00y', 'Kid', NULL),
+('Foz do Iguaçu.', 1, 'gantz009', 'Kid', 1),
+('Saudades desse dia!', 2, 'mariafernanda', 'Marianinho', NULL),
+('Como você está?', 3, 'f0x_00', 'gantz009', NULL),
+('O seus cachorros tem quantos anos galera?', 4, 'Marianinho', 'Kid', NULL),
+('Meu cachorro tem 2 anos', 5, 'kaioask', 'Marianinho', 5),
+('Como ele ta ?', 5, 'Marianinho', 'kaioask', 6),
+('Ta saudavel', 5, 'Marianinho', 'kaioask', 7),
+('Ele tem 2 aninhos e mts problemas de respiração :(', 2, 'Kid', 'Marianinho', 5),
+('Inveja', 3, 'f0x_00', 'mariafernanda', 2),
+('Espero q sim, to mt hypado', 6, 'Kid', 'gust42', NULL),
+('Inveja de quem mora em Foz!', 1, 'ClaraOli', 'Galadriel00y', 1),
+('Espero que sim', 6, 'MartinsSofia', 'kaioak', NULL),
+('Alguém aqui joga algum jogo', 7, 'PedroAlmeida', 'gust42', NULL);
+
+
+
+
+
+
+
+
+
