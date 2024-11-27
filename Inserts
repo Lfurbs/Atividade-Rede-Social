@@ -233,9 +233,13 @@ VALUES
 ('Meditação'),
 ('Jardinagem');
 
-INSERT INTO UsuarioTag (Nome_User, Nome_Tag)
+INSERT INTO Usuario_Tag (Nome_User, Nome_Tag)
 VALUES
 ('Kid', 'Tecnologia'),
+('Kid', 'Viagem'),
+('Kid', 'Fotografia'),
+('Kid', 'Cachorros'),
+('Kid', 'Esportes'),
 ('Marianinho', 'Viagem'),
 ('PedroAlmeida', 'Desenvolvimento Pessoal'),
 ('mariafernanda', 'Natureza'),
