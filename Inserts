@@ -58,66 +58,52 @@ VALUES
 ('MartinsSofia', 9, 'MartinsSofia', 'não curtiu seu post'),
 ('Marianinho', 10, 'Marianinho', 'curtiu seu post');
 
--- Insert Isaac
 INSERT INTO Comentarios (Conteudo, ID_Postagem_Pai, Autor, Destinatario, ID_Comentario_Pai) VALUES
-('Onde fica esse lugar?', 1, 'Galadriel00y', 'Kid', NULL),
-('Que legal!', 1, 'gantz009', 'Kid', 1),
+('Onde fica esse lugar?', 1, 'Galadriel00y', 'Marianinho', NULL),
+('Foz do Iguaçu', 1, 'gantz009', 'Galadriel00y', 1),
 ('Saudades desse dia!', 2, 'mariafernanda', 'Marianinho', NULL),
-('Como você está?', 3, 'f0x_00', 'gantz009', 3),
-('O seu cachorro tem quantos anos?', 4, 'Marianinho', 'Galadriel00y', NULL),
-('Eu já fui lá duas vezes e tirei fotos incríveis! Posso te mostrar depois.', 1, 'Galadriel00y', 'ovildo001', 1),
-('Que tal marcarmos um encontro lá para matar a saudade?', 2, 'Marianinho', 'mariafernanda', 2),  
-('Estou bem, obrigado! E você?', 3, 'gantz009', 'f0x_00', 3),  
-('Ele tem 3 anos e é muito brincalhão!', 4, 'Galadriel00y', 'Marianinho', 4),  
-('Eu tenho um labrador também! A gente podia fazer um encontro entre os cachorros.', 4, 'ClaraOli', 'Galadriel00y', 4);
-
-INSERT INTO Comentarios 
-(Conteudo, ID_Postagem_Pai, Nome_Autor, Nome_Destinatario, ID_Comentario_Pai) 
-VALUES
-('Onde fica esse lugar?', 1, 'Galadriel00y', 'Kid', NULL),
-('Foz do Iguaçu.', 1, 'gantz009', 'Kid', 1),
-('Saudades desse dia!', 2, 'mariafernanda', 'Marianinho', NULL),
-('Como você está?', 3, 'f0x_00', 'gantz009', NULL),
+('Como você está?', 3, 'f0x_00', 'gantz009', Null),
 ('O seus cachorros tem quantos anos galera?', 4, 'Marianinho', 'Kid', NULL),
 ('Meu cachorro tem 2 anos', 5, 'kaioask', 'Marianinho', 5),
-('Como ele ta ?', 5, 'Marianinho', 'kaioask', 6),
-('Ta saudavel', 5, 'Marianinho', 'kaioask', 7),
+('Como ele ta?', 5, 'Marianinho', 'kaioask', 6),
+('Ta saudavel', 5, 'kaioask', 'Marianinho', 7),
 ('Ele tem 2 aninhos e mts problemas de respiração :(', 2, 'Kid', 'Marianinho', 5),
-('Inveja', 3, 'f0x_00', 'mariafernanda', 2),
+('Eu já fui lá duas vezes e tirei fotos incríveis! Posso te mostrar depois.', 1, 'ovildo001', 'Galadriel00y', 1),
+('Que tal marcarmos um encontro lá para matar a saudade? ;)', 1, 'Marianinho', 'mariafernanda', 3),  
+('Acho que comecei a melhorar dps do post, vlw pela preocupação', 3, 'gantz009', 'f0x_00', 4),  
+('Ele tem 3 anos e é muito brincalhão!', 4, 'Galadriel00y', 'Marianinho', 5),  
+('Eu tenho um labrador também! A gente podia fazer um encontro entre os cachorros.', 4, 'ClaraOli', 'Galadriel00y', 13);
+('Inveja', 3, 'f0x_00', 'gust42', NULL),
 ('Espero q sim, to mt hypado', 6, 'Kid', 'gust42', NULL),
-('Inveja de quem mora em Foz!', 1, 'ClaraOli', 'Galadriel00y', 1),
-('Espero que sim', 6, 'MartinsSofia', 'kaioak', NULL),
-('Alguém aqui joga algum jogo', 7, 'PedroAlmeida', 'gust42', NULL);
+('Inveja de quem mora em Foz!', 1, 'ClaraOli', 'gantz009', 2),
+('Espero que sim', 6, 'MartinsSofia', 'gust42', NULL),
+('Não muito, tenho alergia😢', 7, 'PedroAlmeida', 'ClaraOli', Null);
 
 -- Inser Isaac
-INSERT INTO Avaliacoes_Comentarios (ID_Comentario, Avaliador, Avaliado, Tipo) VALUES
-(1, 'Kid', 'Galadriel00y', 'curtiu seu comentário'),
-(2, 'Kid', 'gantz009', 'não curtiu seu comentário'),
-(3, 'Marianinho', 'mariafernanda', 'curtiu seu comentário'),
-(4, 'f0x_00', 'galoshamo', 'curtiu seu comentário'),
-(5, 'Galadriel00y', 'Marianinho', 'curtiu seu comentário'),(6, 'ovildo001', 'Galadriel00y', 'curtiu seu comentário'),
-(7, 'mariafernanda', 'Marianinho', 'curtiu seu comentário'),
-(8, 'gantz009', 'f0x_00', 'curtiu seu comentário'),  
-(9, 'ClaraOli', 'Galadriel00y', 'curtiu seu comentário'),
-(10, 'PedroAlmeida', 'ovildo001', 'curtiu seu comentário');
-
-
-INSERT INTO Avaliacoes_Comentarios 
-(ID_Comentario, ID_Usuario, Tipo) 
-VALUES
-(3, 'Marianinho', 'curtiu seu comentário'),
-(2, 'gust42', 'não curtiu seu comentário'),
-(2, 'gust42', 'curtiu seu comentário'),
-(4, 'kaioask', 'não curtiu seu comentário'),
-(9, 'f0x_00', 'não curtiu seu comentário'),
-(11, 'gust42', 'curtiu seu comentário'),
-(12, 'ClaraOli', 'não curtiu seu comentário'),
-(13, 'MartinsSofia', 'não curtiu seu comentário'),
-(14, 'PedroAlmeida', 'curtiu seu comentário'),
-(12, 'Marianinho', 'não curtiu seu comentário');
+INSERT INTO Avaliacoes_Comentarios (Avaliador, Avaliado, Tipo) VALUES
+('Kid', 'Galadriel00y', 'curtiu seu comentário'),
+('Kid', 'gantz009', 'não curtiu seu comentário'),
+('Marianinho', 'mariafernanda', 'curtiu seu comentário'),
+('f0x_00', 'galoshamo', 'curtiu seu comentário'),
+('Galadriel00y', 'Marianinho', 'curtiu seu comentário'),
+('ovildo001', 'Galadriel00y', 'curtiu seu comentário'),
+('mariafernanda', 'Marianinho', 'curtiu seu comentário'),
+('gantz009', 'f0x_00', 'curtiu seu comentário'),  
+('ClaraOli', 'Galadriel00y', 'curtiu seu comentário'),
+('PedroAlmeida', 'ovildo001', 'curtiu seu comentário');
+('Marianinho', 'curtiu seu comentário'),
+('gust42', 'não curtiu seu comentário'),
+('gust42', 'curtiu seu comentário'),
+('kaioask', 'não curtiu seu comentário'),
+('f0x_00', 'não curtiu seu comentário'),
+('gust42', 'curtiu seu comentário'),
+('ClaraOli', 'não curtiu seu comentário'),
+('MartinsSofia', 'não curtiu seu comentário'),
+('PedroAlmeida', 'curtiu seu comentário'),
+('Marianinho', 'não curtiu seu comentário');
 
 -- Insersts Isaac
-INSERT INTO Notificacoes (ID_User_Notificado, Tipo_Interacao, ID_Postagem_Origem, Data_Hora)
+INSERT INTO Notificacoes (Notificado, Tipo_Interacao, ID_Postagem_Origem, Data_Hora)
 VALUES
 ('Galadriel00y', 'curtiu', 1, '2024-11-27 12:31:00'),
 ('gantz009', 'curtiu', 2, '2024-11-26 14:11:00'),
@@ -132,45 +118,96 @@ VALUES
 
 INSERT INTO Grupo (Nome, Descricao, Nome_Criador)
 VALUES
-('Grupo A', 'Grupo para discussões de tecnologia', 'Kid'),
-('Grupo B', 'Grupo de viagens e turismo', 'Marianinho'),
-('Grupo C', 'Grupo de desenvolvimento pessoal', 'PedroAlmeida'),
-('Grupo D', 'Grupo sobre esportes radicais', 'gantz009'),
-('Grupo E', 'Grupo de estudos de programação', 'kaioak'),
-('Grupo F', 'Grupo de fotografia', 'ClaraOli'),
-('Grupo G', 'Grupo de leitura de livros', 'f0x_00'),
-('Grupo H', 'Grupo de jardinagem e plantas', 'Marianinho'),
-('Grupo I', 'Grupo sobre culinária', 'galoshamo'),
-('Grupo J', 'Grupo de meditação e bem-estar', 'MartinsSofia');
+('Gamers', 'Um grupo pra reunir todos os gamers', '13-08-2023', 'Marianinho'),
+('Raposa fanclub', 'Um grupo pra todos os amadores de raposas por ai', '31-01-2020', 'f0x-00'),
+('Amegos', 'Um grupo pra quem quer fazer novos amigos', '25-10-2024', 'Kid'),
+('Amantes de livros', 'Vamos falar sobre nossos livros favoritos!', '25-10-2024', 'ovildo001'),
+('Help with Studying', 'Grupo de estudo pra ajudar aqueles que não querem estudar sozinhos e aqueles que tem dificuldades', '30-10-2024', 'kaioask'),
+('React videos', 'Grupo pra quando eu quiser assistir algo com alguém', '26-11-2021', 'gust42'),
+('Futebol⚽⚽⚽', 'Futebol é vida✨', '08-05-2019', 'PedroAlmeida'),
+('Amantes de Maquiagem💄', 'Um lugar para menines e meninis falar sobre a única coisa que importa... Maquiagem!', '01-01-2023', 'MartinsSofia'),
+('TOP Filmes', 'Grupo para indicação de filmes', '07-10-2024', 'ClaraOli'),
+('Memes', 'MEMES, tipos de carinhas são, MEMES, uns são bons e outros não. Um grupo pra se cagar de rir', '09-11-2021', 'gantz009'),
 
-INSERT INTO Membro_Grupo (Nome_User, ID_Grupo, Funcao)
+INSERT INTO Membro_Grupo (ID_Membro, Membro, ID_Grupo, Funcao)
 VALUES
-('Kid', 1, 'administrador'),
-('f0x_00', 1, 'membro'),
-('Marianinho', 2, 'administrador'),
-('Galadriel00y', 2, 'membro'),
-('PedroAlmeida', 3, 'administrador'),
-('ClaraOli', 3, 'membro'),
-('gantz009', 4, 'administrador'),
-('galoshamo', 5, 'membro'),
-('ovildo001', 6, 'membro'),
-('MartinsSofia', 7, 'administrador');
+(1, 'Marianinho', 1, 'Administrador'),
+(2, 'Marianinho', 3, 'Membro'),
+(7, 'Marianinho', 5, 'Membro'),
+(6, 'Marianinho', 7, 'Administrador'),
+(2, 'Marianinho', 8, 'Membro'),
+(2, 'Marianinho', 9, 'Membro'),
+(2, 'Marianinho', 10, 'Membro'),
+(1, 'f0x-00', 2, 'Administrador'),
+(3, 'f0x-00', 3, 'Membro'),
+(2, 'f0x-00', 4, 'Administradora'),
+(3, 'f0x-00', 9, 'Membro'),
+(2, 'Kid', 1, 'Membro'),
+(2, 'Kid', 2, 'Membro'),
+(1, 'Kid', 1, 'Administrador'),
+(2, 'Kid', 5, 'Membro'),
+(6, 'Kid', 6, 'Membro'),
+(13, 'Kid', 9, 'Membro'),
+(3, 'Kid', 10, 'Membro'),
+(1, 'gust42', 6, 'Administrador'),
+(10, 'gust42', 3, 'Membro'),
+(10, 'gust42', 9, 'Administrador'),
+(1, 'gantz009', 10, 'Administrador'),
+(3, 'gantz009', 1, 'Administrador'),
+(5, 'gantz009', 3, 'Membro'),
+(3, 'gantz009', 7, 'Administrador'),
+(5, 'gantz009', 9, 'Administrador'),
+(4, 'galoshamo', 1, 'Membro'),
+(6, 'galoshamo', 3, 'Membro'),
+(4, 'galoshamo', 4, 'Membro'),
+(2, 'galoshamo', 6, 'Membro'),
+(3, 'galoshamo', 8, 'Membro'),
+(6, 'galoshamo', 9, 'Membro'),
+(4, 'galoshamo', 10, 'Membro'),
+(5, 'Galadriel00y', 1, 'Membro'),
+(7, 'Galadriel00y', 3, 'Administrador'),
+(5, 'Galadriel00y', 4, 'Administrador'),
+(4, 'Galadriel00y', 7, 'Membro'),
+(7, 'Galadriel00y', 9, 'Administrador'),
+(5, 'Galadriel00y' 10, 'Administrador'),
+(8, 'ovildo001', 3, 'Membro'),
+(1, 'ovildo001', 4, 'Administrador'),
+(3, 'ovildo001', 6, 'Membro'),
+(4, 'ovildo001', 8, 'Membro'),
+(8, 'ovildo001', 9, 'Membro'),
+(3, 'mariafernanda', 'Membro'),
+(4, 'mariafernanda', 3, 'Membro'),
+(7, 'mariafernanda', 6, 'Membro'),
+(2, 'mariafernanda', 7, 'Membro'),
+(4, 'mariafernanda', 9, 'Membro'),
+(1, 'ClaraOli', 9, 'Administrador'),
+(4, 'ClaraOli', 2, 'Membro'),
+(11, 'ClaraOli', 3, 'Membro'),
+(4, 'ClaraOli', 5, 'Membro'),
+(5, 'ClaraOli', 6, 'Membros',
+(5, 'ClaraOli', 8, 'Administrador'),
+(1, 'MartinsSofia', 8, 'Administrador'),
+(1, 'kaioask', 5, 'Administrador'),
+(1, 'PedroAlmeida', 'Administrador'),
 
 INSERT INTO Chat (ID_User1, ID_User2, Data_Criacao)
 VALUES
-('Kid', 'Galadriel00y', '2024-11-27 12:30:00'),
-('gantz009', 'Marianinho', '2024-11-26 14:10:00'),
-('f0x_00', 'mariafernanda', '2024-11-25 18:45:00'),
-('PedroAlmeida', 'galoshamo', '2024-11-23 09:00:00'),
-('ClaraOli', 'f0x_00', '2024-11-22 22:00:00'),
-('galoshamo', 'f0x_00', '2024-11-21 13:00:00'),
-('Marianinho', 'Galadriel00y', '2024-11-20 15:30:00'),
-('gantz009', 'ovildo001', '2024-11-19 17:45:00'),
-('ClaraOli', 'MartinsSofia', '2024-11-18 09:00:00'),
-('PedroAlmeida', 'ClaraOli', '2024-11-17 20:15:00');
+('Marianinho', 'Kid', '22-01-2024 12:30:00'),
+('f0x_00', 'Kid', '22-10-2024 14:10:00'),
+('f0x_00', 'Marianinho', '01-01-2024 18:45:00'),
+('ovildo', 'Kid', '10-10-2020 09:00:00'),
+('gust42', 'Marianinho', '01-01-2024 22:00:00'),
+('PedroAlmeida', 'MartinsSofia', '20-02-2023 13:00:00'),
+('MartinsSofia', 'ClaraOli', '09-01-2024 17:45:00'),
+('ClaraOli', 'Pedro'Almeida', '12-12-2022 13:00:00'),
+('gust42', 'PedroAlmeida', '07-12-2022 18:45:00'),
+('f0x_00', 'MartinsSofia', '19-09-2024 15:30:00'),
+('Marianinho', 'mariafernada', '01-012024 15:30:00'),
 
 INSERT INTO Mensagem (ID_Chat, Remetente, Destinatario, Conteudo, Data_Hora, Status)
 VALUES
+--Revisão
+
 (1, 'Kid', 'Galadriel00y', 'Oi, tudo bem?', '2024-11-27 12:31:00', 'Enviada'),
 (2, 'gantz009', 'Marianinho', 'Como está o cachorro?', '2024-11-26 14:11:00', 'Enviada'),
 (3, 'f0x_00', 'mariafernanda', 'Assisti o seu vídeo, muito bom!', '2024-11-25 18:46:00', 'Enviada'),
