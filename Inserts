@@ -44,6 +44,32 @@ VALUES
 ('PedroAlmeida', 'texto', 'Dica de livro: "O Alquimista" de Paulo Coelho. Alguém já leu? 📚🤔', '31/01/2024'),
 ('gantz009', 'video', 'Esse gato tocando piano e muito engraçado 😂 ', '07-06-2024'),
 
+INSERT INTO Avaliacoes_Postagens 
+(Avaliador, ID_Postagem_Avaliada, ID_Notificado, Tipo)
+VALUES
+('Kid', 1, 'Galadriel00y', 'curtiu seu post'),
+('f0x_00', 2, 'gantz009', 'não curtiu seu post'),
+('gantz009', 3, 'mariafernanda', 'curtiu seu post'),
+('Galadriel00y', 4, 'f0x_00', 'curtiu seu post'),
+('kaioak', 5, 'ovildo001', 'curtiu seu post'),
+('ovildo001', 6, 'kaioak', 'curtiu seu post'),
+('ClaraOli', 7, 'gust42', 'curtiu seu post'),
+('PedroAlmeida', 8, 'ClaraOli', 'curtiu seu post'),
+('MartinsSofia', 9, 'MartinsSofia', 'não curtiu seu post'),
+('Marianinho', 10, 'Marianinho', 'curtiu seu post');
+
+-- Insert Isaac
+INSERT INTO Comentarios (Conteudo, ID_Postagem_Pai, Autor, Destinatario, ID_Comentario_Pai) VALUES
+('Onde fica esse lugar?', 1, 'Galadriel00y', 'Kid', NULL),
+('Que legal!', 1, 'gantz009', 'Kid', 1),
+('Saudades desse dia!', 2, 'mariafernanda', 'Marianinho', NULL),
+('Como você está?', 3, 'f0x_00', 'gantz009', 3),
+('O seu cachorro tem quantos anos?', 4, 'Marianinho', 'Galadriel00y', NULL),
+('Eu já fui lá duas vezes e tirei fotos incríveis! Posso te mostrar depois.', 1, 'Galadriel00y', 'ovildo001', 1),
+('Que tal marcarmos um encontro lá para matar a saudade?', 2, 'Marianinho', 'mariafernanda', 2),  
+('Estou bem, obrigado! E você?', 3, 'gantz009', 'f0x_00', 3),  
+('Ele tem 3 anos e é muito brincalhão!', 4, 'Galadriel00y', 'Marianinho', 4),  
+('Eu tenho um labrador também! A gente podia fazer um encontro entre os cachorros.', 4, 'ClaraOli', 'Galadriel00y', 4);
 
 INSERT INTO Comentarios 
 (Conteudo, ID_Postagem_Pai, Nome_Autor, Nome_Destinatario, ID_Comentario_Pai) 
@@ -63,6 +89,19 @@ VALUES
 ('Espero que sim', 6, 'MartinsSofia', 'kaioak', NULL),
 ('Alguém aqui joga algum jogo', 7, 'PedroAlmeida', 'gust42', NULL);
 
+-- Inser Isaac
+INSERT INTO Avaliacoes_Comentarios (ID_Comentario, Avaliador, Avaliado, Tipo) VALUES
+(1, 'Kid', 'Galadriel00y', 'curtiu seu comentário'),
+(2, 'Kid', 'gantz009', 'não curtiu seu comentário'),
+(3, 'Marianinho', 'mariafernanda', 'curtiu seu comentário'),
+(4, 'f0x_00', 'galoshamo', 'curtiu seu comentário'),
+(5, 'Galadriel00y', 'Marianinho', 'curtiu seu comentário'),(6, 'ovildo001', 'Galadriel00y', 'curtiu seu comentário'),
+(7, 'mariafernanda', 'Marianinho', 'curtiu seu comentário'),
+(8, 'gantz009', 'f0x_00', 'curtiu seu comentário'),  
+(9, 'ClaraOli', 'Galadriel00y', 'curtiu seu comentário'),
+(10, 'PedroAlmeida', 'ovildo001', 'curtiu seu comentário');
+
+
 INSERT INTO Avaliacoes_Comentarios 
 (ID_Comentario, ID_Usuario, Tipo) 
 VALUES
@@ -77,8 +116,97 @@ VALUES
 (14, 'PedroAlmeida', 'curtiu seu comentário'),
 (12, 'Marianinho', 'não curtiu seu comentário');
 
+-- Insersts Isaac
+INSERT INTO Notificacoes (ID_User_Notificado, Tipo_Interacao, ID_Postagem_Origem, Data_Hora)
+VALUES
+('Galadriel00y', 'curtiu', 1, '2024-11-27 12:31:00'),
+('gantz009', 'curtiu', 2, '2024-11-26 14:11:00'),
+('mariafernanda', 'comentou', 3, '2024-11-25 18:46:00'),
+('f0x_00', 'curtiu', 4, '2024-11-27 08:16:00'),
+('Marianinho', 'comentou', 5, '2024-11-24 16:31:00'),
+('PedroAlmeida', 'comentou', 6, '2024-11-27 20:01:00'),
+('ovildo001', 'comentou', 7, '2024-11-23 09:01:00'),
+('MartinsSofia', 'comentou', 8, '2024-11-22 22:01:00'),
+('galoshamo', 'curtiu', 9, '2024-11-21 13:01:00'),
+('kaioak', 'curtiu', 10, '2024-11-27 07:01:00');
 
+INSERT INTO Grupo (Nome, Descricao, Nome_Criador)
+VALUES
+('Grupo A', 'Grupo para discussões de tecnologia', 'Kid'),
+('Grupo B', 'Grupo de viagens e turismo', 'Marianinho'),
+('Grupo C', 'Grupo de desenvolvimento pessoal', 'PedroAlmeida'),
+('Grupo D', 'Grupo sobre esportes radicais', 'gantz009'),
+('Grupo E', 'Grupo de estudos de programação', 'kaioak'),
+('Grupo F', 'Grupo de fotografia', 'ClaraOli'),
+('Grupo G', 'Grupo de leitura de livros', 'f0x_00'),
+('Grupo H', 'Grupo de jardinagem e plantas', 'Marianinho'),
+('Grupo I', 'Grupo sobre culinária', 'galoshamo'),
+('Grupo J', 'Grupo de meditação e bem-estar', 'MartinsSofia');
 
+INSERT INTO Membro_Grupo (Nome_User, ID_Grupo, Funcao)
+VALUES
+('Kid', 1, 'administrador'),
+('f0x_00', 1, 'membro'),
+('Marianinho', 2, 'administrador'),
+('Galadriel00y', 2, 'membro'),
+('PedroAlmeida', 3, 'administrador'),
+('ClaraOli', 3, 'membro'),
+('gantz009', 4, 'administrador'),
+('galoshamo', 5, 'membro'),
+('ovildo001', 6, 'membro'),
+('MartinsSofia', 7, 'administrador');
+
+INSERT INTO Chat (ID_User1, ID_User2, Data_Criacao)
+VALUES
+('Kid', 'Galadriel00y', '2024-11-27 12:30:00'),
+('gantz009', 'Marianinho', '2024-11-26 14:10:00'),
+('f0x_00', 'mariafernanda', '2024-11-25 18:45:00'),
+('PedroAlmeida', 'galoshamo', '2024-11-23 09:00:00'),
+('ClaraOli', 'f0x_00', '2024-11-22 22:00:00'),
+('galoshamo', 'f0x_00', '2024-11-21 13:00:00'),
+('Marianinho', 'Galadriel00y', '2024-11-20 15:30:00'),
+('gantz009', 'ovildo001', '2024-11-19 17:45:00'),
+('ClaraOli', 'MartinsSofia', '2024-11-18 09:00:00'),
+('PedroAlmeida', 'ClaraOli', '2024-11-17 20:15:00');
+
+INSERT INTO Mensagem (ID_Chat, Remetente, Destinatario, Conteudo, Data_Hora, Status)
+VALUES
+(1, 'Kid', 'Galadriel00y', 'Oi, tudo bem?', '2024-11-27 12:31:00', 'Enviada'),
+(2, 'gantz009', 'Marianinho', 'Como está o cachorro?', '2024-11-26 14:11:00', 'Enviada'),
+(3, 'f0x_00', 'mariafernanda', 'Assisti o seu vídeo, muito bom!', '2024-11-25 18:46:00', 'Enviada'),
+(4, 'PedroAlmeida', 'galoshamo', 'Está se preparando para a corrida?', '2024-11-23 09:01:00', 'Enviada'),
+(5, 'ClaraOli', 'f0x_00', 'Vamos marcar aquele encontro?', '2024-11-22 22:02:00', 'Enviada'),
+(6, 'galoshamo', 'f0x_00', 'Você tem sugestões de livros?', '2024-11-21 13:02:00', 'Enviada'),
+(7, 'Marianinho', 'Galadriel00y', 'O cachorro está melhor!', '2024-11-20 15:31:00', 'Enviada'),
+(8, 'gantz009', 'ovildo001', 'Você viu a última foto de natureza?', '2024-11-19 17:46:00', 'Enviada'),
+(9, 'ClaraOli', 'MartinsSofia', 'Vamos sair para uma corrida amanhã?', '2024-11-18 09:01:00', 'Enviada'),
+(10, 'PedroAlmeida', 'ClaraOli', 'Eu gostaria de saber mais sobre livros de produtividade.', '2024-11-17 20:16:00', 'Enviada');
+
+INSERT INTO Tag (Nome_Tag)
+VALUES
+('Tecnologia'),
+('Viagem'),
+('Desenvolvimento Pessoal'),
+('Natureza'),
+('Cachorros'),
+('Esportes'),
+('Fotografia'),
+('Culinária'),
+('Meditação'),
+('Jardinagem');
+
+INSERT INTO UsuarioTag (Nome_User, Nome_Tag)
+VALUES
+('Kid', 'Tecnologia'),
+('Marianinho', 'Viagem'),
+('PedroAlmeida', 'Desenvolvimento Pessoal'),
+('mariafernanda', 'Natureza'),
+('Galadriel00y', 'Cachorros'),
+('f0x_00', 'Esportes'),
+('galoshamo', 'Fotografia'),
+('Kid', 'Culinária'),
+('ClaraOli', 'Meditação'),
+('MartinsSofia', 'Jardinagem');
 
 
 
