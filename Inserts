@@ -134,3 +134,51 @@ VALUES
 ('f0x_00', 'MartinsSofia', '2024-09-19 15:30:00'),
 ('Marianinho', 'mariafernanda', '2024-01-01 15:30:00');
 
+INSERT INTO Mensagem (ID_Chat, Remetente, Conteudo, Destinatario, Data_Hora, Status)
+VALUES
+(3, 'f0x_00', 'Oi, para todos os queridos amantes de raposas', 'Marianinho', '2024-01-01 18:45:00', 'Lida'),
+(4, 'ovildo001', 'cole', 'Kid', '2020-10-10 09:00:00', 'Lida'),
+(5, 'gust42', 'Tira os zoio da minha mina >:(((', 'Marianinho', '2024-01-01 22:00:00', 'Enviada'),
+(6, 'PedroAlmeida', 'oieeee tranquilo?', 'MartinsSofia', '2023-02-20 13:00:00', 'Recebida'),
+(1, 'Marianinho', 'Curte jogos indie?', 'Kid', '2024-01-22 12:30:00', 'Enviada'),
+(1, 'Kid', 'ADORO!!', 'Marianinho', '2024-01-22 13:07:00', 'Recebida'),
+(2, 'f0x_00', 'Oi, para todos os queridos amantes de raposas', 'Kid', '2024-01-01 14:10:00', 'Lida'),
+(2, 'Kid', 'MDSSSS GENIAL CARA', 'f0x_00', '2020-02-01 15:16:00', 'Enviada'),
+(8, 'kaioask', 'Fala amigo', 'PedroAlmeida', '2022-12-12 13:00:00', 'Recebida'),
+(11, 'Marianinho', 'iai amor', 'mariafernanda', '2024-01-01 15:30:00', 'Enviada'),
+(11, 'mariafernanda', 'vou ficar com vergonha assim 😳', 'galoshamo', '2024-01-01 15:32:00', 'Lida'),
+(11, 'Marianinho', 'Q isso, gatinha assim? N pode', 'mariafernanda', '2024-01-01 15:33:00', 'Enviada'),
+(11, 'Marianinho', 'Manda uma foto sua linda 🙈', 'mariafernanda', '2024-01-01 15:37:00', 'Recebida'),
+(9, 'gust42', 'oie', 'PedroAlmeida', '2022-12-07 18:45:00', 'Enviada'),
+(10, 'f0x_00', 'Oi, para todos os queridos amantes de raposas', 'MartinsSofia', '2024-09-19 15:30:00', 'Enviada'),
+(7, 'MartinsSofia', 'sdds amiga', 'ClaraOli', '2024-01-09 17:45:00', 'Lida'),
+(7, 'ClaraOli', 'bora se ver', 'MartinsSofia', '2024-01-09 17:59:00', 'Enviada');
+
+INSERT INTO Tag (Nome_Tag)
+VALUES
+('Tecnologia'),
+('Viagem'),
+('Desenvolvimento Pessoal'),
+('Natureza'),
+('Cachorros'),
+('Esportes'),
+('Fotografia'),
+('Culinária'),
+('Meditação'),
+('Jardinagem');
+
+INSERT INTO UsuarioTag (Nome_User, Nome_Tag)
+VALUES
+('Kid', 'Tecnologia'),
+('Kid', 'Viagem'),
+('Kid', 'Fotografia'),
+('Kid', 'Cachorros'),
+('Kid', 'Esportes'),
+('Marianinho', 'Viagem'),
+('PedroAlmeida', 'Desenvolvimento Pessoal'),
+('mariafernanda', 'Natureza'),
+('Galadriel00y', 'Cachorros'),
+('f0x_00', 'Esportes'),
+('galoshamo', 'Fotografia'),
+('ClaraOli', 'Meditação'),
+('MartinsSofia', 'Jardinagem');
