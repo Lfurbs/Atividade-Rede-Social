@@ -59,7 +59,7 @@ END $$
 
 DELIMITER ;
 
--- Triggerda table Mensagem
+-- Trigger da table Mensagem
 DELIMITER $$
 
 CREATE TRIGGER ValidarInsercaoMensagem
@@ -76,3 +76,26 @@ BEGIN
         SET MESSAGE_TEXT = 'O chat informado não existe.';
     END IF;
 END $$
+
+-- Trigger da table Tag, Usuario_Tag
+DELIMITER $$
+
+CREATE TRIGGER Limitar_Tags_Por_Usuario
+BEFORE INSERT ON UsuarioTag
+FOR EACH ROW
+BEGIN
+    DECLARE Total_Tags INT;
+    
+    -- Conta o número de tags que o usuário já tem
+    SELECT COUNT(*) INTO Total_Tags
+    FROM UsuarioTag
+    WHERE Nome_User = NEW.Nome_User;
+    
+    -- Verifica se o usuário já tem 5 tags
+    IF Total_Tags >= 5 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'O usuário já possui 5 tags, não é possível adicionar mais.';
+    END IF;
+END $$
+
+DELIMITER ;
