@@ -1,22 +1,22 @@
 INSERT INTO Usuario
-(Nome_User, Email, Data_Nascimento, Fot)
+(Nome_User, Email, Data_Nascimento, Foto)
 VALUES
-('Kid', 'bigkidbeingcoool', '24-03-2003', 'meudesenho.png'),
-('f0x_00', 'eugostoderaposas@hotmail.com', '25-02-2000', 'wild_white_fox.jepg'),
-('Marianinho', 'mariano2287@uorak.com', '25-02-19990', 'IMG_03000460'),
-('mariafernanda', 'mafe@gmail.com', '17-05-1988', '05541_lab.png'),
-('gantz009', 'esfera@gmail.com', '13-01-2003', 'ASDCS15X.jpeg'),
-('galoshamo', 'galodbriga@outlook.com', '02-06-1987', 'galoindiano.png'),
-('Galadriel00y', 'yruilu@gmail.com', '18-06-1987', 'sdafds.png'),
-('ovildo001', 'ovildo001@hotmail.com', '10-08-2000', 'kasik.png'),
-('kaioask', 'kaioask23@gmail.com', '01-08-1999', 'IMG_19385019'),
-('gust42', 'gust42@gmail.com', '06-11-2002', 'askask.png'),
-('ClaraOli', 'clara.oliveira@gmail.com', '15-03-1993', 'clara_oliveira.png'),
-('MartinsSofia', 'sofia.martins@gmail.com', '22-12-2002', 'sofia.png'),
-('PedroAlmeida', 'pedro.almeida@gmail.com', '08-09-2001', 'almeida.jpg'),
+('Kid', 'bigkidbeingcoool', '2003-03-24', 'meudesenho.png'),
+('f0x_00', 'eugostoderaposas@hotmail.com', '2000-02-25', 'wild_white_fox.jpeg'),
+('Marianinho', 'mariano2287@uorak.com', '1990-02-25', 'IMG_03000460'),
+('mariafernanda', 'mafe@gmail.com', '1988-05-17', '05541_lab.png'),
+('gantz009', 'esfera@gmail.com', '2003-01-13', 'ASDCS15X.jpeg'),
+('galoshamo', 'galodbriga@outlook.com', '1987-06-02', 'galoindiano.png'),
+('Galadriel00y', 'yruilu@gmail.com', '1987-06-18', 'sdafds.png'),
+('ovildo001', 'ovildo001@hotmail.com', '2000-08-10', 'kasik.png'),
+('kaioask', 'kaioask23@gmail.com', '1999-08-01', 'IMG_19385019'),
+('gust42', 'gust42@gmail.com', '2002-11-06', 'askask.png'),
+('ClaraOli', 'clara.oliveira@gmail.com', '1993-03-15', 'clara_oliveira.png'),
+('MartinsSofia', 'sofia.martins@gmail.com', '2002-12-22', 'sofia.png'),
+('PedroAlmeida', 'pedro.almeida@gmail.com', '2001-09-08', 'almeida.jpg');
 
 INSERT INTO Conexao
-(ID_Conexao, User_Primario, Seguindo)
+(User_Primario, Seguindo)
 VALUES
 ('Kid', 'Marianinho'),
 ('Marianinho', 'Kid'),
@@ -24,20 +24,24 @@ VALUES
 ('ovildo001', 'Kid'),
 ('kaioask', 'f0x_00'),
 ('gust42', 'Kid'),
-('MartinSofia', 'PedroAlmeida'),
+('MartinsSofia', 'PedroAlmeida'),
 ('ClaraOli', 'Galadriel00y'),
 ('PedroAlmeida', 'mariafernanda'),
 ('Marianinho', 'mariafernanda'),
+('Galadriel00y', 'gantz009'),
+('Galadriel00y', 'mariafernanda'),
+('Galadriel00y', 'galoshamo');
 
 INSERT INTO Postagens
 (Autor, Tipo, Conteudo, Data_Criacao)
 VALUES
-('Marianinho', 'imagem', 'Hard life enquanto vivo na praia', '22-02-2024'),
-('Kid', 'texto', '"Another love song about shit, and I'll be rich if I give another diss" Tyler The Creator e mt bom', '24-08-2024'),
-('ovildo001', 'video', 'Meu humor estar pessimo hj', '23/09/2024'),
-('kaioask', 'imagem', 'Que dia frio', '02/10/2024'),
-('gust42', 'video', 'Sera que vai ter continuaçao ?', '09/03/2024'),
-('ClaraOli', 'imagem', 'Compartilhando uma foto do meu último passeio de bicicleta 🚴‍♂️', '29-03-2024'),
-('PedroAlmeida', 'texto', 'Dica de livro: "O Alquimista" de Paulo Coelho. Alguém já leu? 📚🤔', '31/01/2024'),
-('gantz009', 'video', 'Esse gato tocando piano e muito engraçado 😂 ', '07-06-2024'),
-
+('Galadriel00y', 'texto', 'Onde fica esse lugar?','2024-11-27 12:30:00'),
+('gantz009', 'imagem', 'Aqui está uma foto incrível!', '2024-11-26 14:10:00'),
+('Marianinho', 'imagem', 'Hard life enquanto vivo na praia', '2024-02-22'),
+('Kid', 'texto', '"Another love song about shit, and I´ll be rich if I give another diss Tyler The Creator e mt bom', '2024-08-24'),
+('ovildo001', 'video', 'Meu humor estar pessimo hj', '2024-09-23'),
+('kaioask', 'imagem', 'Que dia frio', '2024-10-02'),
+('gust42', 'video', 'Sera que vai ter continuaçao ?', '2024-03-09'),
+('ClaraOli', 'imagem', 'Compartilhando uma foto do meu último passeio de bicicleta 🚴‍♂️', '2024-03-29'),
+('PedroAlmeida', 'texto', 'Dica de livro: "O Alquimista" de Paulo Coelho. Alguém já leu? 📚🤔', '2024-01-31'),
+('gantz009', 'video', 'Esse gato tocando piano e muito engraçado 😂 ', '2024-06-07');
