@@ -35,3 +35,25 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER Limitar_Tags_Por_Usuario
+BEFORE INSERT ON UsuarioTag
+FOR EACH ROW
+BEGIN
+    DECLARE Total_Tags INT;
+    
+   
+    SELECT COUNT(*) INTO Total_Tags
+    FROM UsuarioTag
+    WHERE Nome_User = NEW.Nome_User;
+    
+   
+    IF Total_Tags >= 5 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'O usuário já possui 5 tags, não é possível adicionar mais.';
+    END IF;
+END $$
+
+DELIMITER ;
