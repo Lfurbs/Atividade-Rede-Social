@@ -5,11 +5,11 @@ BEFORE INSERT ON Notificacoes
 FOR EACH ROW
 BEGIN
 
-    IF (NEW.ID_Postagem_Origem IS NOT NULL AND NEW.ID_Comentario_Origem IS NOT NULL)
-       OR (NEW.ID_Postagem_Origem IS NULL AND NEW.ID_Comentario_Origem IS NULL) THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'É necessário informar apenas uma origem: postagem ou comentário.';
-    END IF;
+	IF (NEW.ID_Postagem_Origem IS NOT NULL AND NEW.ID_Comentario_Origem IS NOT NULL)
+   	OR (NEW.ID_Postagem_Origem IS NULL AND NEW.ID_Comentario_Origem IS NULL) THEN
+    	SIGNAL SQLSTATE '45000'
+    	SET MESSAGE_TEXT = 'É necessário informar apenas uma origem: postagem ou comentário.';
+	END IF;
 END $$
 
 DELIMITER ;
@@ -20,18 +20,18 @@ CREATE TRIGGER Notificar_Avaliacao_Postagem
 AFTER INSERT ON Avaliacoes_Postagens
 FOR EACH ROW
 BEGIN
-    DECLARE Tipo_Notificacao VARCHAR(50);
+	DECLARE Tipo_Notificacao VARCHAR(50);
 
-    IF NEW.Tipo = 'curtiu seu post' THEN
-        SET Tipo_Notificacao = 'Curtiu sua postagem';
-    ELSE
-        SET Tipo_Notificacao = 'Não curtiu sua postagem';
-    END IF;
+	IF NEW.Tipo = 'curtiu seu post' THEN
+    	SET Tipo_Notificacao = 'Curtiu sua postagem';
+	ELSE
+    	SET Tipo_Notificacao = 'Não curtiu sua postagem';
+	END IF;
 
-    INSERT INTO Notificacoes (ID_User_Notificado, Tipo_Interacao, ID_Postagem_Origem, Data_Hora)
-    SELECT P.Autor, 'curtiu', NEW.ID_Postagem_Avaliada, CURRENT_TIMESTAMP
-    FROM Postagens P
-    WHERE P.ID_Postagem = NEW.ID_Postagem_Avaliada;
+	INSERT INTO Notificacoes (ID_User_Notificado, Tipo_Interacao, ID_Postagem_Origem, Data_Hora)
+	SELECT P.Autor, 'curtiu', NEW.ID_Postagem_Avaliada, CURRENT_TIMESTAMP
+	FROM Postagens P
+	WHERE P.ID_Postagem = NEW.ID_Postagem_Avaliada;
 END $$
 
 DELIMITER ;
@@ -42,18 +42,18 @@ CREATE TRIGGER Notificar_Avaliacao_Comentarios
 AFTER INSERT ON Avaliacoes_Comentarios
 FOR EACH ROW
 BEGIN
-    DECLARE Tipo_Notificacao VARCHAR(50);
+	DECLARE Tipo_Notificacao VARCHAR(50);
 
-    IF NEW.Tipo = 'curtiu seu comentário' THEN
-        SET Tipo_Notificacao = 'Curtiu seu comentário';
-    ELSE
-        SET Tipo_Notificacao = 'Não curtiu seu comentário';
-    END IF;
+	IF NEW.Tipo = 'curtiu seu comentário' THEN
+    	SET Tipo_Notificacao = 'Curtiu seu comentário';
+	ELSE
+    	SET Tipo_Notificacao = 'Não curtiu seu comentário';
+	END IF;
 
-    INSERT INTO Notificacoes (ID_User_Notificado, Tipo_Interacao, ID_Comentario_Origem, Data_Hora)
-    SELECT C.Autor, 'curtiu', NEW.ID_Comentario, CURRENT_TIMESTAMP
-    FROM Comentarios C
-    WHERE C.ID_Comentario = NEW.ID_Comentario;
+	INSERT INTO Notificacoes (ID_User_Notificado, Tipo_Interacao, ID_Comentario_Origem, Data_Hora)
+	SELECT C.Autor, 'curtiu', NEW.ID_Comentario, CURRENT_TIMESTAMP
+	FROM Comentarios C
+	WHERE C.ID_Comentario = NEW.ID_Comentario;
 END $$
 
 DELIMITER ;
@@ -64,33 +64,15 @@ CREATE TRIGGER ValidarInsercaoMensagem
 BEFORE INSERT ON Mensagem
 FOR EACH ROW
 BEGIN
-    DECLARE ChatExiste INT;
-    SELECT COUNT(*) INTO ChatExiste
-    FROM Chat
-    WHERE ID_Chat = NEW.ID_Chat; 
+	DECLARE ChatExiste INT;
+	SELECT COUNT(*) INTO ChatExiste
+	FROM Chat
+	WHERE ID_Chat = NEW.ID_Chat;
 
-    IF ChatExiste = 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'O chat informado não existe.';
-    END IF;
-END $$
-
-DELIMITER $$
-
-CREATE TRIGGER Limitar_Tags_Por_Usuario
-BEFORE INSERT ON UsuarioTag
-FOR EACH ROW
-BEGIN
-    DECLARE Total_Tags INT;
-    
-    SELECT COUNT(*) INTO Total_Tags
-    FROM UsuarioTag
-    WHERE Nome_User = NEW.Nome_User;
-    
-    IF Total_Tags >= 5 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'O usuário já possui 5 tags, não é possível adicionar mais.';
-    END IF;
+	IF ChatExiste = 0 THEN
+    	SIGNAL SQLSTATE '45000'
+    	SET MESSAGE_TEXT = 'O chat informado não existe.';
+	END IF;
 END $$
 
 DELIMITER ;
