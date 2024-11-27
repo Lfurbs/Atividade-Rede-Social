@@ -63,6 +63,19 @@ VALUES
 ('Espero que sim', 6, 'MartinsSofia', 'kaioak', NULL),
 ('Alguém aqui joga algum jogo', 7, 'PedroAlmeida', 'gust42', NULL);
 
+INSERT INTO Avaliacoes_Comentarios 
+(ID_Comentario, ID_Usuario, Tipo) 
+VALUES
+(3, 'Marianinho', 'curtiu seu comentário'),
+(2, 'gust42', 'não curtiu seu comentário'),
+(2, 'gust42', 'curtiu seu comentário'),
+(4, 'kaioask', 'não curtiu seu comentário'),
+(9, 'f0x_00', 'não curtiu seu comentário'),
+(11, 'gust42', 'curtiu seu comentário'),
+(12, 'ClaraOli', 'não curtiu seu comentário'),
+(13, 'MartinsSofia', 'não curtiu seu comentário'),
+(14, 'PedroAlmeida', 'curtiu seu comentário'),
+(12, 'Marianinho', 'não curtiu seu comentário');
 
 
 
