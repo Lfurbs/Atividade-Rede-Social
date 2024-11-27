@@ -40,3 +40,38 @@ WHERE
     c.Autor = 'nome_do_usuario'  
 ORDER BY 
     c.Data_Hora DESC; 
+
+
+--4º Consulta Thayuan
+SELECT 
+    'Postagem' AS Tipo,
+    P.Autor AS Usuario,
+    P.Conteudo AS Conteudo,
+    P.Data_Criacao AS Data_Hora
+FROM 
+    Postagens P
+
+UNION ALL
+
+SELECT 
+    'Comentário' AS Tipo,
+    C.Autor AS Usuario,
+    C.Conteudo AS Conteudo,
+    C.Data_Hora AS Data_Hora
+FROM 
+    Comentarios C
+ORDER BY 
+    Data_Hora DESC;
+
+--5º Consulta Thayuan
+SELECT 
+    G.Nome AS Nome_Grupo,
+    M.Nome_User AS Nome_Usuario,
+    M.Funcao AS Funcao
+FROM 
+    Membro_Grupo M
+INNER JOIN 
+    Grupo G ON M.ID_Grupo = G.ID_Grupo
+ORDER BY 
+    G.Nome, M.Funcao;
+
