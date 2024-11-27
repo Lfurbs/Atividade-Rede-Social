@@ -28,3 +28,15 @@ LEFT JOIN (
 ) AP ON P.ID_Postagem = AP.ID_Postagem_Avaliada
 GROUP BY P.Tipo
 ORDER BY Total_Likes DESC;
+
+--3º Consulta Isaac
+SELECT 
+    c.Conteudo AS Comentario,
+    c.ID_Postagem_Pai AS Postagem_Relacionado,
+    c.Data_Hora AS DataComentario
+FROM 
+    Comentarios c
+WHERE 
+    c.Autor = 'nome_do_usuario'  
+ORDER BY 
+    c.Data_Hora DESC; 
