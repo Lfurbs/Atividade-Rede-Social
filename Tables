@@ -120,7 +120,7 @@ CREATE TABLE Tag (
     	Nome_Tag VARCHAR(50) PRIMARY KEY NOT NULL
 );
 
-CREATE TABLE UsuarioTag (
+CREATE TABLE Usuario_Tag (
     	Nome_User VARCHAR(50) NOT NULL, 
     	Nome_Tag VARCHAR(50) NOT NULL, 
     	PRIMARY KEY (Nome_User, Nome_Tag), 
