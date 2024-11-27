@@ -1,1 +1,37 @@
+DELIMITER $$
 
+CREATE TRIGGER Validar_Notificacao
+BEFORE INSERT ON Notificacoes
+FOR EACH ROW
+BEGIN
+
+    IF (NEW.ID_Postagem_Origem IS NOT NULL AND NEW.ID_Comentario_Origem IS NOT NULL)
+       OR (NEW.ID_Postagem_Origem IS NULL AND NEW.ID_Comentario_Origem IS NULL) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'É necessário informar apenas uma origem: postagem ou comentário.';
+    END IF;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER Notificar_Avaliacao_Postagem
+AFTER INSERT ON Avaliacoes_Postagens
+FOR EACH ROW
+BEGIN
+    DECLARE Tipo_Notificacao VARCHAR(50);
+
+    IF NEW.Tipo = 'curtiu seu post' THEN
+        SET Tipo_Notificacao = 'Curtiu sua postagem';
+    ELSE
+        SET Tipo_Notificacao = 'Não curtiu sua postagem';
+    END IF;
+
+    INSERT INTO Notificacoes (ID_User_Notificado, Tipo_Interacao, ID_Postagem_Origem, Data_Hora)
+    SELECT P.Autor, 'curtiu', NEW.ID_Postagem_Avaliada, CURRENT_TIMESTAMP
+    FROM Postagens P
+    WHERE P.ID_Postagem = NEW.ID_Postagem_Avaliada;
+END $$
+
+DELIMITER ;
