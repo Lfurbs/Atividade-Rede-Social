@@ -1,1 +1,43 @@
+INSERT INTO Usuario
+(Nome_User, Email, Data_Nascimento, Fot)
+VALUES
+('Kid', 'bigkidbeingcoool', '24-03-2003', 'meudesenho.png'),
+('f0x_00', 'eugostoderaposas@hotmail.com', '25-02-2000', 'wild_white_fox.jepg'),
+('Marianinho', 'mariano2287@uorak.com', '25-02-19990', 'IMG_03000460'),
+('mariafernanda', 'mafe@gmail.com', '17-05-1988', '05541_lab.png'),
+('gantz009', 'esfera@gmail.com', '13-01-2003', 'ASDCS15X.jpeg'),
+('galoshamo', 'galodbriga@outlook.com', '02-06-1987', 'galoindiano.png'),
+('Galadriel00y', 'yruilu@gmail.com', '18-06-1987', 'sdafds.png'),
+('ovildo001', 'ovildo001@hotmail.com', '10-08-2000', 'kasik.png'),
+('kaioask', 'kaioask23@gmail.com', '01-08-1999', 'IMG_19385019'),
+('gust42', 'gust42@gmail.com', '06-11-2002', 'askask.png'),
+('ClaraOli', 'clara.oliveira@gmail.com', '15-03-1993', 'clara_oliveira.png'),
+('MartinsSofia', 'sofia.martins@gmail.com', '22-12-2002', 'sofia.png'),
+('PedroAlmeida', 'pedro.almeida@gmail.com', '08-09-2001', 'almeida.jpg'),
+
+INSERT INTO Conexao
+(ID_Conexao, User_Primario, Seguindo)
+VALUES
+('Kid', 'Marianinho'),
+('Marianinho', 'Kid'),
+('f0x_00', 'Marianinho'),
+('ovildo001', 'Kid'),
+('kaioask', 'f0x_00'),
+('gust42', 'Kid'),
+('MartinSofia', 'PedroAlmeida'),
+('ClaraOli', 'Galadriel00y'),
+('PedroAlmeida', 'mariafernanda'),
+('Marianinho', 'mariafernanda'),
+
+INSERT INTO Postagens
+(Autor, Tipo, Conteudo, Data_Criacao)
+VALUES
+('Marianinho', 'imagem', 'Hard life enquanto vivo na praia', '22-02-2024'),
+('Kid', 'texto', '"Another love song about shit, and I'll be rich if I give another diss" Tyler The Creator e mt bom', '24-08-2024'),
+('ovildo001', 'video', 'Meu humor estar pessimo hj', '23/09/2024'),
+('kaioask', 'imagem', 'Que dia frio', '02/10/2024'),
+('gust42', 'video', 'Sera que vai ter continuaçao ?', '09/03/2024'),
+('ClaraOli', 'imagem', 'Compartilhando uma foto do meu último passeio de bicicleta 🚴‍♂️', '29-03-2024'),
+('PedroAlmeida', 'texto', 'Dica de livro: "O Alquimista" de Paulo Coelho. Alguém já leu? 📚🤔', '31/01/2024'),
+('gantz009', 'video', 'Esse gato tocando piano e muito engraçado 😂 ', '07-06-2024'),
 
