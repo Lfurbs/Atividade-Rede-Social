@@ -1,1 +1,30 @@
+--1º Consulta Isaac
 
+SELECT 
+    UT.Nome_Tag, 
+    COUNT(UT.Nome_User) AS Total_Usuarios
+FROM 
+    UsuarioTag UT
+GROUP BY 
+    UT.Nome_Tag
+ORDER BY 
+    Total_Usuarios DESC;
+
+--2º Consulta Isaac
+
+SELECT 
+    P.Tipo AS Tipo_Conteudo,
+    COUNT(P.ID_Postagem) AS Total_Postagens,
+    COALESCE(SUM(AP.Total_Likes), 0) AS Total_Likes,
+    ROUND(COALESCE(SUM(AP.Total_Likes), 0) / COUNT(P.ID_Postagem), 2) AS Likes_Por_Postagem
+FROM Postagens P
+LEFT JOIN (
+    SELECT 
+        ID_Postagem_Avaliada, 
+        COUNT(*) AS Total_Likes
+    FROM Avaliacoes_Postagens
+    WHERE Tipo = 'curtiu seu post'
+    GROUP BY ID_Postagem_Avaliada
+) AP ON P.ID_Postagem = AP.ID_Postagem_Avaliada
+GROUP BY P.Tipo
+ORDER BY Total_Likes DESC;
