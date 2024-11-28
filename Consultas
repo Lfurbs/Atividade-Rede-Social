@@ -43,35 +43,22 @@ ORDER BY
 
 
 --4º Consulta Thayuan
-SELECT 
-    'Postagem' AS Tipo,
-    P.Autor AS Usuario,
-    P.Conteudo AS Conteudo,
-    P.Data_Criacao AS Data_Hora
-FROM 
-    Postagens P
-
-UNION ALL
-
-SELECT 
-    'Comentário' AS Tipo,
-    C.Autor AS Usuario,
-    C.Conteudo AS Conteudo,
-    C.Data_Hora AS Data_Hora
-FROM 
-    Comentarios C
-ORDER BY 
-    Data_Hora DESC;
+SELECT  
+    g.Nome AS Nome_Grupo,  
+    m.Nome_User AS Nome_Membro,  
+    m.Funcao AS Funcao  
+FROM  
+    Membro_Grupo m  
+JOIN  
+    Grupo g ON m.ID_Grupo = g.ID_Grupo;
 
 --5º Consulta Thayuan
-SELECT 
-    G.Nome AS Nome_Grupo,
-    M.Nome_User AS Nome_Usuario,
-    M.Funcao AS Funcao
-FROM 
-    Membro_Grupo M
-INNER JOIN 
-    Grupo G ON M.ID_Grupo = G.ID_Grupo
-ORDER BY 
-    G.Nome, M.Funcao;
+SELECT u.Nome_User AS Usuario,  
+COUNT(DISTINCT a.ID_Avaliacao) AS Total_Avaliacoes,  
+COUNT(DISTINCT c.ID_Comentario) AS Total_Comentarios  
+FROM Usuario u  
+LEFT JOIN Avaliacoes_Postagens a ON u.Nome_User = a.Avaliador  
+LEFT JOIN Comentarios c ON u.Nome_User = c.Autor  
+GROUP BY u.Nome_User  
+ORDER BY Total_Avaliacoes + Total_Comentarios DESC;
 
